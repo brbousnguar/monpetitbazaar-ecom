@@ -137,3 +137,24 @@ dist
 
 # VSCode editor config
 .vscode/
+# Next.js
+.next/
+out/
+
+# OS / editor noise
+.DS_Store
+*.log
+.vscode/
+.idea/
+
+# Medusa specific (if separate)
+build/
+dist/
+.cache/
+.tmp/
+
+# Environment secrets
+.env
+.env.local
+.env.production
+.env.development
