@@ -3,15 +3,8 @@ name: CI
 on: [push]
 
 jobs:
-  build: 
-
+  example:
     runs-on: ubuntu-latest
-
-    steps: 
-      - uses: actions/checkout@v1
-      - name: Run a one-line script
-        run: echo Hello World!
-      - name: Run a multi-line script
-        run: |
-          echo add another actions to build
-          echo: test and deploy your build
+    steps:
+      - name: Echo Hello
+        run: echo "Hello, World!"
