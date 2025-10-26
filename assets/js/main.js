@@ -8,9 +8,23 @@ let soundEnabled = true;
 let gameScore = 0;
 let visitorCount = Math.floor(Math.random() * 100) + 42;
 
-// Launch date (set to 30 days from now - you can change this!)
-const launchDate = new Date();
-launchDate.setDate(launchDate.getDate() + 30);
+// Fixed launch date - Set to January 2, 2026 at 10:00 AM
+// This date will remain the same across all page refreshes
+function getLaunchDate() {
+    // Check if we have a saved launch date in localStorage
+    let savedLaunchDate = localStorage.getItem('bazaarLaunchDate');
+    
+    if (!savedLaunchDate) {
+        // Set fixed launch date: January 2, 2026 at 10:00 AM
+        const launchDate = new Date('2026-01-02T10:00:00');
+        localStorage.setItem('bazaarLaunchDate', launchDate.toISOString());
+        return launchDate;
+    } else {
+        return new Date(savedLaunchDate);
+    }
+}
+
+const launchDate = getLaunchDate();
 
 // Fun Facts Data
 const funFacts = [
@@ -61,9 +75,10 @@ function updateCountdown() {
         document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
         document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
         
-        // Update progress bar (assuming 30 days total)
-        const totalTime = 30 * 24 * 60 * 60 * 1000; // 30 days in milliseconds
-        const elapsed = totalTime - timeLeft;
+        // Update progress bar (calculate from creation date to launch date)
+        const creationDate = new Date('2025-10-26T00:00:00'); // Today's date when counter was created
+        const totalTime = launchDate.getTime() - creationDate.getTime();
+        const elapsed = now - creationDate.getTime();
         const progress = Math.min((elapsed / totalTime) * 100, 100);
         
         document.getElementById('progressBar').style.width = progress + '%';
@@ -396,5 +411,15 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("📦 + Accès prioritaire aux articles Amazon Prime");
         showMessage('🎁 Code VIP trouvé ! HUNTER2024 (-20% + priorité)', 'success');
         createConfetti();
+    };
+    
+    // Admin function to reset launch date (for testing)
+    window.resetLaunchDate = function(daysFromNow = 30) {
+        const newLaunchDate = new Date();
+        newLaunchDate.setDate(newLaunchDate.getDate() + daysFromNow);
+        localStorage.setItem('bazaarLaunchDate', newLaunchDate.toISOString());
+        console.log(`🔧 Launch date reset to: ${newLaunchDate.toLocaleString('fr-FR')}`);
+        console.log("📝 Refresh the page to see the new countdown!");
+        return newLaunchDate;
     };
 });
