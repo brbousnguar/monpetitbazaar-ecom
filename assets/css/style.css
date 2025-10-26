@@ -1,0 +1,382 @@
+/* Mon Petit Bazaar - Coming Soon Page Styles */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Floating Particles */
+.particle {
+    position: fixed;
+    pointer-events: none;
+    opacity: 0.7;
+    animation: float-particle 10s infinite linear;
+    z-index: 1;
+}
+
+@keyframes float-particle {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Body and Background */
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2d3436;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Container */
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    max-width: 650px;
+    transform: perspective(1000px) rotateX(5deg);
+    animation: float 6s ease-in-out infinite;
+    position: relative;
+    z-index: 10;
+}
+
+@keyframes float {
+    0%, 100% { transform: perspective(1000px) rotateX(5deg) translateY(0px); }
+    50% { transform: perspective(1000px) rotateX(5deg) translateY(-10px); }
+}
+
+/* Construction Emoji */
+.construction-emoji {
+    font-size: 80px;
+    animation: bounce 2s infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-30px); }
+    60% { transform: translateY(-15px); }
+}
+
+/* Typography */
+h1 {
+    font-size: 3em;
+    color: #e17055;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    font-size: 1.5em;
+    color: #00b894;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.message {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #2d3436;
+}
+
+/* Emoji Row */
+.emoji-row {
+    font-size: 2em;
+    margin: 20px 0;
+}
+
+.emoji-row span {
+    display: inline-block;
+    animation: wiggle 2s ease-in-out infinite;
+    margin: 0 10px;
+}
+
+.emoji-row span:nth-child(1) { animation-delay: 0s; }
+.emoji-row span:nth-child(2) { animation-delay: 0.2s; }
+.emoji-row span:nth-child(3) { animation-delay: 0.4s; }
+.emoji-row span:nth-child(4) { animation-delay: 0.6s; }
+.emoji-row span:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+}
+
+/* Countdown */
+.countdown {
+    background: #fdcb6e;
+    color: #2d3436;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(253, 203, 110, 0.3);
+}
+
+/* Social Links */
+.social-links {
+    margin-top: 30px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    background: #74b9ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.social-links a:hover {
+    background: #0984e3;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(116, 185, 255, 0.4);
+}
+
+/* Footer */
+.footer {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #636e72;
+    font-style: italic;
+}
+
+/* Game Styles */
+.mini-game {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.game-emoji {
+    font-size: 3em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px;
+    display: inline-block;
+}
+
+.game-emoji:hover {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.score-display {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Countdown Styles */
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.time-unit {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    min-width: 80px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+.time-number {
+    display: block;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.time-label {
+    display: block;
+    font-size: 0.8em;
+    opacity: 0.9;
+}
+
+/* Progress Bar */
+.progress-container {
+    background: #ecf0f1;
+    border-radius: 25px;
+    padding: 3px;
+    margin: 20px 0;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #00b894, #00cec9);
+    height: 20px;
+    border-radius: 25px;
+    transition: width 2s ease;
+    position: relative;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+/* Email Subscription */
+.email-signup {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    color: white;
+}
+
+.email-input {
+    width: 70%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+.email-button {
+    padding: 12px 20px;
+    background: #00b894;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.email-button:hover {
+    background: #00a085;
+    transform: translateY(-2px);
+}
+
+/* Fun Facts */
+.fun-fact {
+    background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+    padding: 15px;
+    border-radius: 15px;
+    margin: 15px 0;
+    font-style: italic;
+    animation: fadeInOut 4s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Sound Control */
+.sound-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 1.2em;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.sound-control:hover {
+    transform: scale(1.1);
+}
+
+/* Easter Egg */
+.easter-egg {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.easter-egg:hover {
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+        padding: 30px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .subtitle {
+        font-size: 1.2em;
+    }
+    
+    .message {
+        font-size: 1em;
+    }
+
+    .email-input {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+
+    .email-button {
+        width: 100%;
+    }
+
+    .countdown-timer {
+        gap: 10px;
+    }
+
+    .time-unit {
+        min-width: 70px;
+        padding: 10px;
+    }
+}
