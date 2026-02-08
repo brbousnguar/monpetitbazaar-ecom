@@ -1,0 +1,43 @@
+# Docker
+node_modules
+dist
+build
+.dockerignore
+Dockerfile
+Dockerfile.dev
+docker-compose*.yml
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage
+.nyc_output
+
+# Documentation (optional - remove if you want them in the image)
+*.md
+ROADMAP.md
+SPRING_BOOT_README.md
+GETTING_STARTED.md
