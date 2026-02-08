@@ -142,5 +142,55 @@
     "reviewCount": 47,
     "isNew": true,
     "isFeatured": true
+  },
+  {
+    "id": "5",
+    "name": "Casquette Lacoste RK6388 - Édition Roland-Garros",
+    "slug": "casquette-lacoste-rk6388-roland-garros",
+    "category": "Mode - Accessoires",
+    "price": 35.00,
+    "comparePrice": 50.00,
+    "description": "Adoptez le style intemporel de Lacoste avec cette casquette RK6388 en édition spéciale Roland-Garros. Confectionnée en polyester de qualité supérieure, elle allie confort et élégance sportive. Son bleu marine profond et son logo Roland-Garros discret sur le côté affirment votre bon goût.",
+    "shortDescription": "Casquette Lacoste édition Roland-Garros, excellent état, taille M",
+    "features": [
+      "Marque authentique Lacoste, modèle RK6388",
+      "Taille M - Convient à la plupart des morphologies",
+      "Coloris bleu marine élégant et polyvalent",
+      "100% Polyester léger et respirant",
+      "Logo Roland-Garros brodé sur le côté",
+      "Fabriquée au Vietnam selon les standards Lacoste",
+      "État impeccable - Très peu portée, aucun défaut",
+      "Parfaite pour le sport ou le quotidien"
+    ],
+    "specifications": {
+      "Marque": "Lacoste",
+      "Modèle": "RK6388",
+      "Taille": "M",
+      "Couleur": "Bleu marine",
+      "Composition": "100% Polyester",
+      "Origine": "Vietnam",
+      "Collection": "Roland-Garros",
+      "État": "Très bon - Rarement portée"
+    },
+    "stock": 1,
+    "images": [
+      "/pictures/20260208_120803.jpg",
+      "/pictures/20260208_120806.jpg",
+      "/pictures/20260208_120810.jpg",
+      "/pictures/20260208_120812.jpg",
+      "/pictures/20260208_120814.jpg",
+      "/pictures/20260208_120817.jpg",
+      "/pictures/20260208_120824.jpg",
+      "/pictures/20260208_120827.jpg",
+      "/pictures/20260208_120834.jpg",
+      "/pictures/20260208_120835.jpg",
+      "/pictures/20260208_120837.jpg"
+    ],
+    "rating": 5.0,
+    "reviewCount": 0,
+    "isNew": true,
+    "isFeatured": true,
+    "condition": "Très bon état",
+    "tags": ["Lacoste", "Roland-Garros", "Casquette", "Mode homme", "Accessoire sport", "Bleu marine"]
   }
 ]

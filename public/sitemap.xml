@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://monpetitbazaar.fr/</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Product: Lacoste Cap -->
+  <url>
+    <loc>https://monpetitbazaar.fr/product/casquette-lacoste-rk6388-roland-garros</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Product: Wireless Headphones -->
+  <url>
+    <loc>https://monpetitbazaar.fr/product/premium-wireless-headphones</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Product: Fitness Watch -->
+  <url>
+    <loc>https://monpetitbazaar.fr/product/smart-fitness-watch</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Product: Bluetooth Speaker -->
+  <url>
+    <loc>https://monpetitbazaar.fr/product/portable-bluetooth-speaker</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Product: Sticker Pack -->
+  <url>
+    <loc>https://monpetitbazaar.fr/product/artisan-sticker-pack</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

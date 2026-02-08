@@ -63,13 +63,25 @@ async function importProducts() {
     // Import products
     console.log('\n🛍️  Importing products...');
     for (const product of productsData) {
-      // Insert product
+      // Insert or update product
       const productResult = await client.query(
         `INSERT INTO products (
           name, slug, description, short_description, sku, 
           price, compare_price, stock_quantity, 
           is_active, is_featured, category_id
         ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+        ON CONFLICT (slug) 
+        DO UPDATE SET 
+          name = EXCLUDED.name,
+          description = EXCLUDED.description,
+          short_description = EXCLUDED.short_description,
+          price = EXCLUDED.price,
+          compare_price = EXCLUDED.compare_price,
+          stock_quantity = EXCLUDED.stock_quantity,
+          is_active = EXCLUDED.is_active,
+          is_featured = EXCLUDED.is_featured,
+          category_id = EXCLUDED.category_id,
+          updated_at = CURRENT_TIMESTAMP
         RETURNING id`,
         [
           product.name,
@@ -88,6 +100,9 @@ async function importProducts() {
 
       const productId = productResult.rows[0].id;
       console.log(`  ✓ ${product.name} (ID: ${productId})`);
+
+      // Delete existing images for this product
+      await client.query('DELETE FROM product_images WHERE product_id = $1', [productId]);
 
       // Insert product images
       for (let i = 0; i < product.images.length; i++) {

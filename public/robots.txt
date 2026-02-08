@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or sensitive pages
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://monpetitbazaar.fr/sitemap.xml
