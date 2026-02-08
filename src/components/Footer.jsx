@@ -9,14 +9,11 @@ const Footer = () => {
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">MB</span>
-              </div>
-              <span className="text-xl font-bold text-gray-900">Mon Petit Bazaar</span>
+              <img src="/logo.svg" alt="Mon Petit Bazaar" className="h-10 w-auto" />
             </div>
             <p className="text-gray-600 mb-4 max-w-md">
-              Curated products and handmade creations. Quality items at great prices, 
-              personally selected and tested for your satisfaction.
+              Produits sélectionnés et créations artisanales. Articles de qualité à prix imbattables, 
+              personnellement choisis et testés pour votre satisfaction.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-primary-600 transition-colors">
@@ -34,17 +31,17 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">
-              Quick Links
+              Liens Rapides
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/about" className="text-gray-600 hover:text-primary-600 transition-colors">
-                  About Us
+                <Link to="/" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  Accueil
                 </Link>
               </li>
               <li>
                 <Link to="/shop" className="text-gray-600 hover:text-primary-600 transition-colors">
-                  Shop
+                  Boutique
                 </Link>
               </li>
               <li>
@@ -60,30 +57,35 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Customer Service */}
+          {/* Legal & Customer Service */}
           <div>
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">
-              Customer Service
+              Informations Légales
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/shipping" className="text-gray-600 hover:text-primary-600 transition-colors">
-                  Shipping Info
-                </Link>
-              </li>
-              <li>
-                <Link to="/returns" className="text-gray-600 hover:text-primary-600 transition-colors">
-                  Returns
-                </Link>
-              </li>
-              <li>
-                <Link to="/privacy" className="text-gray-600 hover:text-primary-600 transition-colors">
-                  Privacy Policy
+                <Link to="/legal-notice" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  Mentions Légales
                 </Link>
               </li>
               <li>
                 <Link to="/terms" className="text-gray-600 hover:text-primary-600 transition-colors">
-                  Terms & Conditions
+                  CGV
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy-policy" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  Confidentialité
+                </Link>
+              </li>
+              <li>
+                <Link to="/cookie-policy" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  Cookies
+                </Link>
+              </li>
+              <li>
+                <Link to="/returns" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  Retours & Remboursements
                 </Link>
               </li>
             </ul>
@@ -93,7 +95,7 @@ const Footer = () => {
         <div className="mt-8 pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-600 text-sm">
-              © {new Date().getFullYear()} Mon Petit Bazaar. All rights reserved.
+              © {new Date().getFullYear()} Mon Petit Bazaar. Tous droits réservés.
             </p>
             <div className="flex items-center space-x-2 text-gray-600 text-sm">
               <Mail size={16} />
