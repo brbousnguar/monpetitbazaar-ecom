@@ -1,0 +1,146 @@
+[
+  {
+    "id": "1",
+    "name": "Premium Wireless Headphones",
+    "slug": "premium-wireless-headphones",
+    "category": "Amazon - Electronics",
+    "price": 79.99,
+    "comparePrice": 129.99,
+    "description": "Experience crystal-clear sound with these premium wireless headphones. Features active noise cancellation, 30-hour battery life, and comfortable over-ear design perfect for music lovers and professionals.",
+    "shortDescription": "High-quality wireless headphones with noise cancellation",
+    "features": [
+      "Active Noise Cancellation (ANC)",
+      "30 hours battery life",
+      "Bluetooth 5.0 connectivity",
+      "Comfortable over-ear cushions",
+      "Built-in microphone for calls",
+      "Foldable design with carrying case"
+    ],
+    "specifications": {
+      "Brand": "AudioPro",
+      "Connectivity": "Wireless (Bluetooth 5.0)",
+      "Battery Life": "30 hours",
+      "Weight": "250g",
+      "Color": "Matte Black"
+    },
+    "stock": 15,
+    "images": [
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
+      "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&q=80",
+      "https://images.unsplash.com/photo-1545127398-14699f92334b?w=800&q=80",
+      "https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=800&q=80"
+    ],
+    "rating": 4.5,
+    "reviewCount": 328,
+    "isNew": true,
+    "isFeatured": true
+  },
+  {
+    "id": "2",
+    "name": "Smart Fitness Watch",
+    "slug": "smart-fitness-watch",
+    "category": "Amazon - Wearables",
+    "price": 49.99,
+    "comparePrice": 89.99,
+    "description": "Track your health and fitness goals with this advanced smartwatch. Monitor heart rate, steps, sleep quality, and receive notifications from your phone. Water-resistant design perfect for active lifestyles.",
+    "shortDescription": "Advanced fitness tracker with heart rate monitoring",
+    "features": [
+      "Heart rate & sleep monitoring",
+      "7-day battery life",
+      "Water-resistant (IP68)",
+      "Multiple sport modes",
+      "Call & message notifications",
+      "1.4\" color touchscreen"
+    ],
+    "specifications": {
+      "Brand": "FitTrack",
+      "Display": "1.4 inch AMOLED",
+      "Battery": "7 days",
+      "Water Resistance": "IP68",
+      "Compatibility": "iOS & Android"
+    },
+    "stock": 23,
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80",
+      "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=800&q=80",
+      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800&q=80",
+      "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=800&q=80"
+    ],
+    "rating": 4.3,
+    "reviewCount": 567,
+    "isNew": false,
+    "isFeatured": true
+  },
+  {
+    "id": "3",
+    "name": "Portable Bluetooth Speaker",
+    "slug": "portable-bluetooth-speaker",
+    "category": "Amazon - Audio",
+    "price": 34.99,
+    "comparePrice": 59.99,
+    "description": "Take your music anywhere with this compact, powerful Bluetooth speaker. Features 360° sound, waterproof design, and 12-hour playtime. Perfect for outdoor adventures, parties, and everyday listening.",
+    "shortDescription": "Waterproof portable speaker with 360° sound",
+    "features": [
+      "360° surround sound",
+      "IPX7 waterproof rating",
+      "12-hour battery life",
+      "Bluetooth 5.0",
+      "Built-in microphone",
+      "Compact & portable design"
+    ],
+    "specifications": {
+      "Brand": "SoundWave",
+      "Output Power": "10W",
+      "Battery": "12 hours",
+      "Water Resistance": "IPX7",
+      "Range": "10 meters"
+    },
+    "stock": 31,
+    "images": [
+      "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800&q=80",
+      "https://images.unsplash.com/photo-1589003077984-894e133dabab?w=800&q=80",
+      "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=800&q=80",
+      "https://images.unsplash.com/photo-1507646871304-57a27f70d5bc?w=800&q=80"
+    ],
+    "rating": 4.7,
+    "reviewCount": 892,
+    "isNew": false,
+    "isFeatured": false
+  },
+  {
+    "id": "4",
+    "name": "Artisan Sticker Pack - Nature Collection",
+    "slug": "artisan-sticker-pack-nature",
+    "category": "Handmade - Stickers",
+    "price": 8.99,
+    "comparePrice": null,
+    "description": "Beautifully designed handmade sticker collection featuring nature-inspired illustrations. Perfect for decorating laptops, water bottles, notebooks, and planners. Each sticker is carefully crafted with premium vinyl material that's waterproof and fade-resistant.",
+    "shortDescription": "Premium handmade vinyl stickers with nature designs",
+    "features": [
+      "Pack of 15 unique designs",
+      "Premium vinyl material",
+      "Waterproof & fade-resistant",
+      "Perfect for laptops, bottles, notebooks",
+      "Original hand-drawn artwork",
+      "Eco-friendly packaging"
+    ],
+    "specifications": {
+      "Quantity": "15 stickers",
+      "Material": "Premium vinyl",
+      "Size": "2-4 inches each",
+      "Finish": "Matte",
+      "Artist": "Mon Petit Bazaar Studio"
+    },
+    "stock": 50,
+    "images": [
+      "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80",
+      "https://images.unsplash.com/photo-1626287961805-e569f8e6a059?w=800&q=80",
+      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80",
+      "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=800&q=80"
+    ],
+    "rating": 5.0,
+    "reviewCount": 47,
+    "isNew": true,
+    "isFeatured": true
+  }
+]

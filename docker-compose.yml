@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  # React Frontend (Development)
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: monpetitbazaar-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount source code for hot reload
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./index.html:/app/index.html
+      - ./vite.config.js:/app/vite.config.js
+      - ./tailwind.config.js:/app/tailwind.config.js
+      - ./postcss.config.js:/app/postcss.config.js
+      # Exclude node_modules to use container's version
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_API_URL=http://localhost:8080
+    networks:
+      - app-network
+    stdin_open: true
+    tty: true
+
+  # PostgreSQL Database (for future Spring Boot backend)
+  postgres:
+    image: postgres:16-alpine
+    container_name: monpetitbazaar-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: monpetitbazaar
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d monpetitbazaar"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache (for sessions and caching)
+  redis:
+    image: redis:7-alpine
+    container_name: monpetitbazaar-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    command: redis-server --appendonly yes
+
+  # Adminer (Database Management UI)
+  adminer:
+    image: adminer:latest
+    container_name: monpetitbazaar-adminer
+    ports:
+      - "8081:8080"
+    networks:
+      - app-network
+    depends_on:
+      - postgres
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge
