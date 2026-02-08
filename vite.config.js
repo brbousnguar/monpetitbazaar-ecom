@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  base: '/', // Use root path for custom domain
   server: {
     host: '0.0.0.0', // Listen on all network interfaces for Docker
     port: 3000,
@@ -14,6 +15,7 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: true,
+    emptyOutDir: true
   }
 })
