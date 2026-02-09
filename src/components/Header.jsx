@@ -28,16 +28,16 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link to="/" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
-              Home
+              Accueil
             </Link>
             <Link to="/shop" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
-              Shop
-            </Link>
-            <Link to="/about" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
-              About
+              Boutique
             </Link>
             <Link to="/contact" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
               Contact
+            </Link>
+            <Link to="/faq" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+              FAQ
             </Link>
           </nav>
 
@@ -81,21 +81,14 @@ const Header = () => {
               className="px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-lg font-medium transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Home
+              Accueil
             </Link>
             <Link
               to="/shop"
               className="px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-lg font-medium transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Shop
-            </Link>
-            <Link
-              to="/about"
-              className="px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-lg font-medium transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              About
+              Boutique
             </Link>
             <Link
               to="/contact"
@@ -103,6 +96,13 @@ const Header = () => {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact
+            </Link>
+            <Link
+              to="/faq"
+              className="px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-primary-600 rounded-lg font-medium transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              FAQ
             </Link>
           </nav>
         </div>
