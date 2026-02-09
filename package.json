@@ -13,6 +13,7 @@
     "db:import:docker": "docker compose exec frontend node scripts/import-products.js"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "clsx": "^2.1.0",
     "lucide-react": "^0.344.0",
     "pg": "^8.18.0",

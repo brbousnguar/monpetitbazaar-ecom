@@ -1,7 +1,9 @@
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { Mail, Phone, MapPin, Send, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 function ContactPage() {
+  const formRef = useRef();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -9,6 +11,7 @@ function ContactPage() {
     message: ''
   });
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,15 +21,54 @@ function ContactPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a real application, you would send this data to your backend
-    console.log('Form submitted:', formData);
-    setSubmitStatus('success');
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    
-    // Reset status after 5 seconds
-    setTimeout(() => setSubmitStatus(null), 5000);
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      // Check if EmailJS is configured
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        // Fallback: Open default email client with mailto
+        const mailtoLink = `mailto:contact@monpetitbazaar.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+          `Nom: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+        )}`;
+        window.location.href = mailtoLink;
+        setSubmitStatus('mailto');
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Send email using EmailJS
+      const result = await emailjs.sendForm(
+        serviceId,
+        templateId,
+        formRef.current,
+        publicKey
+      );
+
+      if (result.text === 'OK') {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        
+        // Reset status after 5 seconds
+        setTimeout(() => setSubmitStatus(null), 5000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitStatus('error');
+      
+      // Reset error status after 5 seconds
+      setTimeout(() => setSubmitStatus(null), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -98,7 +140,7 @@ function ContactPage() {
         <div>
           <h2 className="text-2xl font-semibold text-gray-900 mb-6">Envoyez-nous un message</h2>
           
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                 Nom complet *
@@ -166,17 +208,43 @@ function ContactPage() {
             {submitStatus === 'success' && (
               <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
                 <p className="text-green-800">
-                  Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.
+                  ✓ Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.
+                </p>
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-red-800">
+                  ✗ Une erreur s'est produite. Veuillez réessayer ou nous contacter directement à contact@monpetitbazaar.com
+                </p>
+              </div>
+            )}
+
+            {submitStatus === 'mailto' && (
+              <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <p className="text-blue-800">
+                  ℹ Votre client email va s'ouvrir. Si cela ne fonctionne pas, envoyez-nous un email à contact@monpetitbazaar.com
                 </p>
               </div>
             )}
 
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2"
+              disabled={isSubmitting}
+              className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2 disabled:bg-blue-400 disabled:cursor-not-allowed"
             >
-              <Send className="w-5 h-5" />
-              <span>Envoyer le message</span>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <span>Envoi en cours...</span>
+                </>
+              ) : (
+                <>
+                  <Send className="w-5 h-5" />
+                  <span>Envoyer le message</span>
+                </>
+              )}
             </button>
           </form>
         </div>
