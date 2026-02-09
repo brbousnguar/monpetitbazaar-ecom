@@ -1,21 +1,9 @@
 name: Deploy to GitHub Pages
 
-# Trigger on push to main but only when relevant files change, to avoid
-# unnecessary builds on unrelated updates (docs, infra, etc.). Keep manual
-# dispatch so you can run this from the Actions UI when needed.
 on:
   push:
-    branches: [main]
-    paths:
-      - 'src/**'
-      - 'public/**'
-      - 'index.html'
-      - 'package.json'
-      - 'vite.config.js'
-      - 'tailwind.config.js'
-      - 'postcss.config.js'
-      - '.github/workflows/deploy-gh-pages.yml'
-
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -23,11 +11,9 @@ permissions:
   pages: write
   id-token: write
 
-# Allow only one pages deployment at a time and cancel in-progress runs
-# when a newer push arrives to avoid queueing duplicate deployments.
 concurrency:
-  group: 'pages'
-  cancel-in-progress: true
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
