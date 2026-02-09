@@ -32,6 +32,8 @@ function ContactPage() {
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+      console.log('EmailJS Config:', { serviceId, templateId, publicKey: publicKey ? 'Set' : 'Not set' });
+
       if (!serviceId || !templateId || !publicKey) {
         // Fallback: Open default email client with mailto
         const mailtoLink = `mailto:contact@monpetitbazaar.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
@@ -43,15 +45,27 @@ function ContactPage() {
         return;
       }
 
-      // Send email using EmailJS
-      const result = await emailjs.sendForm(
+      // Send email using EmailJS with template params
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'contact@monpetitbazaar.com'
+      };
+
+      console.log('Sending email with params:', templateParams);
+
+      const result = await emailjs.send(
         serviceId,
         templateId,
-        formRef.current,
+        templateParams,
         publicKey
       );
 
-      if (result.text === 'OK') {
+      console.log('EmailJS result:', result);
+
+      if (result.text === 'OK' || result.status === 200) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
         
@@ -62,6 +76,7 @@ function ContactPage() {
       }
     } catch (error) {
       console.error('Error sending email:', error);
+      console.error('Error details:', error.text || error.message);
       setSubmitStatus('error');
       
       // Reset error status after 5 seconds

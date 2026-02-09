@@ -10,8 +10,8 @@ import ContactPage from './pages/ContactPage';
 import FAQPage from './pages/FAQPage';
 import LegalNotice from './pages/LegalNotice';
 import TermsOfSale from './pages/TermsOfSale';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import CookiePolicy from './pages/CookiePolicy';
+import DataProtection from './pages/DataProtection';
+import DataUsage from './pages/DataUsage';
 import ReturnPolicy from './pages/ReturnPolicy';
 
 function App() {
@@ -29,8 +29,8 @@ function App() {
               <Route path="/faq" element={<FAQPage />} />
               <Route path="/legal-notice" element={<LegalNotice />} />
               <Route path="/terms" element={<TermsOfSale />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/cookie-policy" element={<CookiePolicy />} />
+              <Route path="/privacy-policy" element={<DataProtection />} />
+              <Route path="/cookie-policy" element={<DataUsage />} />
               <Route path="/returns" element={<ReturnPolicy />} />
             </Routes>
           </main>
