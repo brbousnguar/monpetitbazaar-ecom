@@ -3,7 +3,11 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/', // Use root path for custom domain
+  // Use relative base so the built assets work when served from
+  // GitHub Pages (repo or custom domain) and also work locally.
+  // If you need an absolute base (e.g. a custom domain root), set
+  // VITE_BASE environment variable when building.
+  base: process.env.VITE_BASE ?? './',
   server: {
     host: '0.0.0.0', // Listen on all network interfaces for Docker
     port: 3000,
