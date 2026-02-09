@@ -7,8 +7,8 @@ import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import LegalNotice from './pages/LegalNotice';
 import TermsOfSale from './pages/TermsOfSale';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import CookiePolicy from './pages/CookiePolicy';
+import PrivacyPolicy from './pages/pp';
+import CookiePolicy from './pages/cp';
 import ReturnPolicy from './pages/ReturnPolicy';
 
 function App() {

@@ -8,7 +8,8 @@ services:
       dockerfile: Dockerfile.dev
     container_name: monpetitbazaar-frontend
     ports:
-      - "3000:3000"
+      # map host port 5173 to the container's dev server (container runs on 3000)
+      - "5173:3000"
     volumes:
       # Mount source code for hot reload
       - ./src:/app/src

@@ -3,9 +3,10 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Install dependencies
+# Install dependencies (include devDependencies for the build step)
 COPY package*.json ./
-RUN npm ci --only=production
+# Install all dependencies so Vite (devDependency) is available for the build
+RUN npm ci
 
 # Copy source code
 COPY . .
