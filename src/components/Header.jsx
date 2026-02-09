@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ShoppingBag, Search, Menu, X } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X, Mail } from 'lucide-react';
 import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 
@@ -10,7 +10,22 @@ const Header = () => {
   const cartCount = getCartCount();
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
+    <>
+      {/* Top announcement bar */}
+      <div className="bg-primary-600 text-white py-2 px-4 text-center text-sm">
+        <div className="max-w-7xl mx-auto flex items-center justify-center gap-2">
+          <Mail size={16} />
+          <span>Contactez-nous :</span>
+          <a 
+            href="mailto:contact@monpetitbazaar.fr" 
+            className="font-semibold hover:underline"
+          >
+            contact@monpetitbazaar.fr
+          </a>
+        </div>
+      </div>
+
+      <header className="sticky top-0 z-50 bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
@@ -108,6 +123,7 @@ const Header = () => {
         </div>
       )}
     </header>
+    </>
   );
 };
 
