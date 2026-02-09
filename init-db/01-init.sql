@@ -95,7 +95,7 @@ CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status);
 -- Insert sample admin user (password: admin123)
 -- Note: In production, use bcrypt to hash the password properly
 INSERT INTO users (username, email, password, first_name, last_name, role, is_active, is_email_verified)
-VALUES ('admin', 'admin@monpetitbazaar.fr', '$2a$10$xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 'Admin', 'User', 'ADMIN', true, true)
+VALUES ('admin', 'contact@monpetitbazaar.fr', '$2a$10$xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 'Admin', 'User', 'ADMIN', true, true)
 ON CONFLICT (email) DO NOTHING;
 
 COMMENT ON TABLE users IS 'User accounts and authentication';
