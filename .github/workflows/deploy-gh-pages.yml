@@ -36,6 +36,18 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
+          # Ensure Vite uses a relative base when building on CI so
+          # GitHub Pages will serve the correct asset paths.
+          VITE_BASE: './'
+
+      - name: Show built index.html (CI diagnostic)
+        # This prints the generated index.html into the Actions log so we
+        # can confirm the built HTML references the expected assets.
+        run: |
+          echo "--- dist listing ---"
+          ls -la ./dist || true
+          echo "--- dist/index.html ---"
+          sed -n '1,200p' ./dist/index.html || true
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
