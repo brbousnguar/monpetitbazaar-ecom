@@ -52,10 +52,20 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
       
+      - name: Prepare artifact directory (copy dist -> artifact)
+        run: |
+          rm -rf ./artifact || true
+          mkdir -p ./artifact
+          # Copy the built files into a clean artifact directory so we
+          # are sure we only upload the production build files.
+          cp -r ./dist/* ./artifact/
+          echo "--- artifact listing ---"
+          ls -la ./artifact || true
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./artifact
   
   deploy:
     environment:
