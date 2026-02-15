@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script>
+      (function () {
+        var segmentCount = 0;
+        var loc = window.location;
+        var origin = loc.protocol + '//' + loc.hostname + (loc.port ? ':' + loc.port : '');
+        var basePath = loc.pathname.split('/').slice(0, 1 + segmentCount).join('/');
+        var routePath = loc.pathname.slice(basePath.length).replace(/^\/+/, '');
+        var query = loc.search ? '&' + loc.search.slice(1).replace(/&/g, '~and~') : '';
+        var newUrl = origin + basePath + '/?/' + routePath + query + loc.hash;
+
+        loc.replace(newUrl);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

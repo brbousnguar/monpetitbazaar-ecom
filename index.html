@@ -37,6 +37,21 @@
 </head>
 <body>
     <div id="root"></div>
+    <script>
+      (function () {
+        var loc = window.location;
+        if (!loc.search.startsWith('?/')) return;
+
+        var route = loc.search.slice(2).replace(/~and~/g, '&');
+        var queryIndex = route.indexOf('?');
+        var path = queryIndex === -1 ? route : route.slice(0, queryIndex);
+        var query = queryIndex === -1 ? '' : route.slice(queryIndex);
+        var basePath = loc.pathname.replace(/\/$/, '');
+        var newUrl = (basePath ? basePath : '') + '/' + path + query + loc.hash;
+
+        window.history.replaceState(null, '', newUrl);
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
