@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Star, ShoppingCart, Heart, Share2, Check, Truck, Shield, ArrowLeft, Plus, Minus } from 'lucide-react';
 import { useCart } from '../context/CartContext';
@@ -11,6 +11,14 @@ const ProductPage = () => {
   const { addToCart } = useCart();
   
   const product = products.find(p => p.slug === slug);
+  // Ensure we start at the top of the product page when navigated to
+  useEffect(() => {
+    try {
+      window.scrollTo({ top: 0, left: 0 });
+    } catch (err) {
+      // ignore in environments where window is not available
+    }
+  }, [slug]);
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [isZoomed, setIsZoomed] = useState(false);
