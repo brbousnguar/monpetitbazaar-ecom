@@ -36,3 +36,4 @@
 ## Security & Configuration Tips
 - Copy `.env.example` to `.env` for local secrets and do not commit real credentials.
 - Review `DOCKER.md` and `docker-compose.yml` when working with Docker-based workflows.
+- Named volumes used by Docker Compose are `postgres_data` and `redis_data`.
