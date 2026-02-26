@@ -26,6 +26,8 @@ services:
       - app-network
     stdin_open: true
     tty: true
+    depends_on:
+      - postgres
 
   # PostgreSQL Database (for future Spring Boot backend)
   postgres:
