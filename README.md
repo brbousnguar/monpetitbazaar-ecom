@@ -24,6 +24,14 @@ Le site est automatiquement déployé sur GitHub Pages à chaque push sur la bra
 └── README.md          # Documentation
 ```
 
+## 🧭 Accès local (rappel rapide)
+- Frontend (Vite): http://localhost:5173 (lancer avec `npm run dev` ou Docker).
+- Backend API: attendu sur http://localhost:8080 (référence dans `VITE_API_URL`).  
+  Note: aucun service backend n’est défini dans `docker-compose.yml` à ce jour.
+- PostgreSQL: `localhost:5432` (db: `monpetitbazaar`, user: `admin`, password: `password`).
+- Adminer (UI DB): http://localhost:8081 (serveur: `postgres`).
+- Redis: `localhost:6379`.
+
 ## 🎨 Fonctionnalités actuelles
 - Design coloré et animé
 - Responsive (mobile-friendly)
