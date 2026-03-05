@@ -32,6 +32,36 @@ Le site est automatiquement déployé sur GitHub Pages à chaque push sur la bra
 - Adminer (UI DB): http://localhost:8081 (serveur: `postgres`).
 - Redis: `localhost:6379`.
 
+## 🐳 Démarrer avec Docker Compose
+
+### Mode développement
+```bash
+docker-compose up --build
+```
+
+- Frontend: http://localhost:5173
+- Adminer: http://localhost:8081
+- PostgreSQL: `localhost:5432`
+- Redis: `localhost:6379`
+
+### Mode production local
+```bash
+docker-compose -f docker-compose.prod.yml up --build -d
+```
+
+- Frontend: http://localhost
+
+### Commandes utiles
+```bash
+# Arrêter les services
+docker-compose down
+
+# Voir les logs
+docker-compose logs -f
+```
+
+Pour plus de détails, voir `DOCKER.md`.
+
 ## 🎨 Fonctionnalités actuelles
 - Design coloré et animé
 - Responsive (mobile-friendly)
