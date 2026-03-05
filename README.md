@@ -1,72 +1,59 @@
-# Mon Petit Bazaar - E-commerce 🛍️
+# Mon Petit Bazaar
 
-Site e-commerce en cours de développement pour www.monpetitbazaar.fr
+E-commerce site for selling personal items at competitive prices — [www.monpetitbazaar.fr](https://www.monpetitbazaar.fr)
 
-## 🚧 État actuel
-- Page "En construction" déployée sur GitHub Pages
-- Domaine configuré : www.monpetitbazaar.fr
-- Design amusant et responsive
+## Stack
 
-## 🚀 Déploiement
+- React 18 + Vite 5 + Tailwind CSS
+- React Router v6 (client-side routing)
+- Cart state via React Context, persisted to `localStorage`
+- Contact form via EmailJS (no backend required)
+- Deployed on GitHub Pages (auto-deploy on push to `main`)
 
-Le site est automatiquement déployé sur GitHub Pages à chaque push sur la branche `main`.
+## Local development
 
-### Configuration du domaine
-1. Le fichier `CNAME` configure le domaine personnalisé
-2. Dans les paramètres OVH, configurer les enregistrements DNS :
-   - CNAME : www.monpetitbazaar.fr → votre-username.github.io
-   - A : monpetitbazaar.fr → 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
-
-## 📁 Structure
-```
-├── index.html          # Page d'accueil (site en construction)
-├── CNAME              # Configuration du domaine
-└── README.md          # Documentation
-```
-
-## 🧭 Accès local (rappel rapide)
-- Frontend (Vite): http://localhost:5173 (lancer avec `npm run dev` ou Docker).
-- Backend API: attendu sur http://localhost:8080 (référence dans `VITE_API_URL`).  
-  Note: aucun service backend n’est défini dans `docker-compose.yml` à ce jour.
-- PostgreSQL: `localhost:5432` (db: `monpetitbazaar`, user: `admin`, password: `password`).
-- Adminer (UI DB): http://localhost:8081 (serveur: `postgres`).
-- Redis: `localhost:6379`.
-
-## 🐳 Démarrer avec Docker Compose
-
-### Mode développement
 ```bash
-docker-compose up --build
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # production build → dist/
+npm run lint
+npm run format
 ```
 
-- Frontend: http://localhost:5173
-- Adminer: http://localhost:8081
-- PostgreSQL: `localhost:5432`
-- Redis: `localhost:6379`
+## Docker (optional)
 
-### Mode production local
 ```bash
-docker-compose -f docker-compose.prod.yml up --build -d
+docker-compose up --build                              # dev, http://localhost:5173
+docker-compose -f docker-compose.prod.yml up --build  # production build, http://localhost
 ```
 
-- Frontend: http://localhost
+## Adding products
 
-### Commandes utiles
-```bash
-# Arrêter les services
-docker-compose down
+Edit `src/data/products.json`. Each product needs:
 
-# Voir les logs
-docker-compose logs -f
+```json
+{
+  "id": 6,
+  "name": "Nom du produit",
+  "slug": "nom-du-produit",
+  "category": "Catégorie",
+  "price": 19.99,
+  "description": "Description complète...",
+  "image": "https://...",
+  "images": ["https://...", "https://..."],
+  "inStock": true
+}
 ```
 
-Pour plus de détails, voir `DOCKER.md`.
+- `slug` must be URL-friendly (lowercase, hyphens, no spaces)
+- Set `inStock: false` to hide the "Add to cart" button
 
-## 🎨 Fonctionnalités actuelles
-- Design coloré et animé
-- Responsive (mobile-friendly)
-- Animations CSS amusantes
-- Message d'attente engageant
+## Contact form (EmailJS)
 
-## 📧 Contact
-contact@monpetitbazaar.fr
+Copy `.env.example` to `.env` and fill in your EmailJS credentials (see `CONTACT_FORM_SETUP.md`).
+Without configuration, the form falls back to a `mailto:` link.
+
+## Deployment
+
+GitHub Actions (`deploy-gh-pages.yml`) builds and deploys to GitHub Pages on every push to `main`.
+Domain: `www.monpetitbazaar.fr` configured via the `CNAME` file and OVH DNS.

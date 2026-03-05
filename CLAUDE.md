@@ -5,53 +5,60 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev        # Start Vite dev server at http://localhost:5173
+npm run dev        # Vite dev server at http://localhost:5173
 npm run build      # Production build into dist/
 npm run preview    # Serve the production build locally
-npm run lint       # Run ESLint
-npm run format     # Format src/ with Prettier (run before committing)
-npm run db:import  # Import products via scripts/import-products.js
+npm run lint       # ESLint
+npm run format     # Prettier on src/ (run before committing)
 ```
 
-No test suite is configured. If you add one, register the script in `package.json` and document it here.
+No test suite is configured.
 
-## Docker (development)
+## Docker (optional)
 
 ```bash
-docker-compose up --build          # Dev stack: frontend + PostgreSQL + Redis + Adminer
-docker-compose -f docker-compose.prod.yml up --build -d  # Production build on port 80
-docker-compose down
+docker-compose up --build          # Dev: frontend only, http://localhost:5173
+docker-compose -f docker-compose.prod.yml up --build -d  # Prod: Nginx on port 80
 ```
-
-Local service URLs:
-- Frontend: http://localhost:5173
-- Backend API (not yet implemented): http://localhost:8080 (`VITE_API_URL`)
-- PostgreSQL: `localhost:5432` (db: `monpetitbazaar`, user: `admin`, password: `password`)
-- Adminer: http://localhost:8081 (connect with server: `postgres`)
-- Redis: `localhost:6379`
-
-Copy `.env.example` to `.env` for local environment variables.
 
 ## Architecture
 
-This is a React 18 + Vite single-page application styled with Tailwind CSS, deployed to GitHub Pages. There is **no backend** yet — a Spring Boot backend is planned (see `SPRING_BOOT_README.md`).
+React 18 + Vite SPA styled with Tailwind CSS, deployed to GitHub Pages via `deploy-gh-pages.yml`.
+
+**This is a frontend-only project — there is no backend.**
 
 **Data flow:**
-- Product catalog is stored as static JSON in `src/data/products.json`. The `scripts/import-products.js` script can populate the PostgreSQL database for future backend use.
-- Cart state lives in `CartContext` (`src/context/CartContext.jsx`), persisted to `localStorage`. All components access it via the `useCart()` hook.
-- Contact form uses EmailJS (`@emailjs/browser`) — credentials configured via `VITE_EMAILJS_*` env vars.
+- Product catalog lives in `src/data/products.json`. To add/update products, edit that file directly.
+- Cart state lives in `CartContext` (`src/context/CartContext.jsx`), persisted to `localStorage`. All components consume it via `useCart()`.
+- Contact form uses EmailJS (`@emailjs/browser`) — credentials in `.env` (`VITE_EMAILJS_*`). Falls back to `mailto:` if not configured.
 
 **Routing** (React Router v6, all client-side):
 - `/` — HomePage
-- `/shop` — ShopPage (filters by category/search, sorts, reads from products.json)
-- `/product/:slug` — ProductPage
+- `/shop` — ShopPage (search, category filter, sort — all reads from products.json)
+- `/product/:slug` — ProductPage (image zoom via `react-medium-image-zoom`)
 - `/contact`, `/faq`, and several legal/policy pages
 
-**Component layout:** `Header` + `Footer` wrap all routes. `CartSidebar` is a global overlay rendered outside the route tree.
+**Component layout:** `Header` + `Footer` wrap all routes. `CartSidebar` is a global overlay rendered outside the route tree in `App.jsx`.
+
+## Product schema
+
+```json
+{
+  "id": 1,
+  "name": "string",
+  "slug": "url-friendly-string",
+  "category": "string",
+  "price": 0.00,
+  "description": "string",
+  "image": "primary image URL",
+  "images": ["array", "of", "image", "URLs"],
+  "inStock": true
+}
+```
 
 ## Coding conventions
 
-- Formatting: Prettier enforced. Run `npm run format` before committing.
-- ESLint config: `.eslintrc.cjs` (React + hooks rules). Fix all lint errors before a PR.
-- Style: semicolons, single quotes, PascalCase components, `useX` for hooks.
-- No strict commit convention — keep titles short and imperative.
+- Prettier enforced. Run `npm run format` before committing.
+- ESLint config: `.eslintrc.cjs` (React + hooks). Fix all errors before a PR.
+- Semicolons, single quotes, PascalCase components, `useX` hooks.
+- Short, imperative commit titles.
