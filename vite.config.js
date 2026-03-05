@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: './', // Use relative paths for GitHub Pages
+  base: '/',
   server: {
     host: '0.0.0.0', // Listen on all network interfaces for Docker
     port: 3000,
